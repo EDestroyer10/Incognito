@@ -1,25 +1,60 @@
 # Incognito
-Access the world wide web
+Access the world wide web!
 
-# Setup
-```
-git clone https://github.com/caracal-js/Incognito.git
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/EDestroyer10/Incognito)
+[![Deploy](https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/replit.svg?raw)](https://repl.it/github/titaniumnetwork-dev/Incognito)
+
+## Setup
+
+```sh
+git clone https://github.com/titaniumnetwork-dev/Incognito
 cd Incognito
-git submodule update --init
+npm install
+npm start
 ```
 
-# Ultraviolet
-Ultraviolet's bare server by default is set to Incognito's official bare server (https://incog.dev/bare/)
+## Config
 
-Change the bare server in `uv/uv.config.js` to whatever bare server you have.
-
-Folder prefixes in `uv.sw.js` and `uv.config.js` will have to be changed to where `uv/` is located
-
-`/uv.sw.js` --> `/uv/uv.sw.js`
-
-# Games
-Games are not included by default due to the extremely large size of them. 
-
+```json
+{
+    "port": 8080,
+    "ssl": false,
+    "prefix": "/service/",
+    "codec": "xor",
+    "proxy": true,
+    "blacklist": [],
+    "addresses": [],
+    "authorization": {
+        "name": "__incog_auth",
+        "value": "1"
+    },
+    "appearance": "bright",
+    "engine": "google"
+}
 ```
-git clone https://github.com/caracal-js/gfiles.git source
+
+- `port` HTTP Server Port
+- `ssl` (true / false) HTTP Server SSL
+- `prefix` Corrosion proxy prefix
+- `codec` Corrosion proxy codec
+- `proxy` (true / false) Have Corrosion be hosted on the Node.js application. Recommended to have Corrosion hosted elsewhere with large amounts of clients.
+- `blacklist` Array of hostnames to be blocked on the proxy.
+- `authorization` (Object { name: "...", value: "..." } / false) Proxy authorization cookie
+- `appearance` ("bright" / "midnight" / "ocean" / "lime" / "terminal") Default site appearance
+- `engine` ("google" / "bing" / "brave" / "youtube" / "twitter" / "reddit") Default search engine 
+
+
+## Games
+
+More games can be added to Incognito by adding JSON in `gs.json` in a specific format.
+```json
+{
+    "thumbnail": "thumbnail.jpg", 
+    "location": "./gamelocation/",
+    "title": "Game title"
+}
 ```
+`thumbnail` images are only located in `/src/gs/thumbnails/`
+
+Some games that are available in Incognito's main website are not available in this repo due to sizing reasons.
+These games that don't come with this repo are available in [gfiles](https://github.com/caracal-js/gfiles).
